@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router';
-import UserDetails from './Details.jsx'
+import UserDetails from '../../../Components/UserDetails'
 
 class Users extends React.Component {
     constructor(props){

@@ -4,7 +4,7 @@ import { renderToString } from 'react-dom/server'
 import { match, RouterContext } from 'react-router'
 import fs from 'fs'
 import zlib from 'zlib'
-import routes from './routes/RootRoute'
+import routes from '../src/routes/RootRoute'
 
 const PORT = process.env.PORT || 5000
 

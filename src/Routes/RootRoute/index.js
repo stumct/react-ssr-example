@@ -11,7 +11,6 @@ const rootRoute = {
             component: require('../../Components/Index')
         },
         childRoutes: [
-            require('../Home'),
             require('../About'),
             require('../Users'),
         ],

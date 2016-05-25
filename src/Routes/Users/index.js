@@ -1,7 +1,7 @@
 if (typeof require.ensure !== 'function') require.ensure = (d, c) => c(require)
 
 module.exports = {
-    path: 'users',
+    path: 'users(/:userid)',
   
     getComponent(nextState, cb){
         require.ensure([], (require) => {
