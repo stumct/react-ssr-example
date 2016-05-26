@@ -1,10 +1,14 @@
 import React from 'react'
 import {Link} from 'react-router';
+import {connect} from 'react-redux';
+
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
 
 class About extends React.Component {
     constructor(props){
         super(props);
-        this.state = {text:'', list:[]}
+        this.state = {text:'', list:[], subreddits:{}}
         this.handleButtonClick = this.handleButtonClick.bind(this);
     }
     
@@ -20,9 +24,10 @@ class About extends React.Component {
         <div>
         <h1>This is the About component!<Link to="about/foo">Foo</Link> {this.props.children}</h1>
         <p>{this.state.text}</p>
+        <p>{this.props.test}</p>
         <button onClick={() => this.handleButtonClick()}>List!</button>
         <ul>
-        {this.state.list.map(i => <li key={i}>{i}</li>)}
+        {/*this.state.subreddits ? this.state.subreddits.data.children.map(i => <li key={i.data.display_name}>{i.data.display_name}</li>) : null*/}
         </ul>
         </div>
         )
@@ -33,4 +38,12 @@ class About extends React.Component {
     }
 }
 
-module.exports = About
+
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    test: state.test
+  }
+}
+
+module.exports = connect(mapStateToProps)(About)
