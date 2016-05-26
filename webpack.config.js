@@ -12,14 +12,7 @@ module.exports = {
       test: /\.jsx?$/,
       exclude: /node_modules/,
       loader: 'babel-loader',
-    }, {
-      test: /\.html$/,
-      loader: "file?name=[name].[ext]",
     }]
-  },
-  devServer: {
-      inline: true,
-      progress: true,
   },
   plugins: [
     new webpack.optimize.DedupePlugin(),
