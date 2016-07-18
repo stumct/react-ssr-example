@@ -3,7 +3,7 @@
 // Child routes are also defined
 
 const rootRoute = {
-    component: 'div',
+    //component: 'div',
     childRoutes: [{
         path: '/',
         component: require('../../Components/App'),
