@@ -7,7 +7,7 @@ require.extensions['.sass'] = () => { return; }; require.extensions['.scss'] = (
 
 module.exports = {
     entry: {
-        bundle: [__dirname + '/src/index.jsx',]
+        bundle: ['babel-polyfill',__dirname + '/src/index.jsx',]
     },
     output: {
         path: __dirname + '/dist',

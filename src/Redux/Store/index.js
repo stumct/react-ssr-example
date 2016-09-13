@@ -5,7 +5,10 @@ import reducer from '../Reducers';
 import loggerMiddleware from 'redux-logger';
 import promiseMiddleware from 'redux-promise';
 import thunk from 'redux-thunk';
-//import initialState from './initialState';
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from '../Sagas'
+
+export const sagaMiddleware = createSagaMiddleware()
 
 // setup the redux middleware array
 const middleware = [];
@@ -23,11 +26,16 @@ export default (r, i, isServer) => {
         middleware.push(routerMiddleware(browserHistory));
     }
     // apply redux-promise middleware to support promises on dispatch() (https://github.com/acdlite/redux-promise)
-    middleware.push(promiseMiddleware, thunk);
+    middleware.push(promiseMiddleware, thunk, sagaMiddleware);
 
-    return createStore(
+
+    const store = createStore(
         r ? r : reducer,
         i ? i : initialState,
         applyMiddleware(...middleware)
     );
+
+    sagaMiddleware.run(rootSaga)
+
+    return store
 };
